@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "THE THRESHOLD · 커리어",
+    "slug": "threshold-career",
+    "scheme": "threshold-career",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#DCDFD8",
+    "ios": { "supportsTablet": false, "bundleIdentifier": "com.threshold.career" },
+    "android": { "package": "com.threshold.career" },
+    "web": { "bundler": "metro", "output": "single" }
+  }
+}

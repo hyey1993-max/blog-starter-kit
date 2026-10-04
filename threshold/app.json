@@ -1,0 +1,41 @@
+{
+  "expo": {
+    "name": "THE THRESHOLD",
+    "slug": "trace-threshold",
+    "scheme": "threshold",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#F4EFE2",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.threshold.app",
+      "infoPlist": {
+        "LSApplicationQueriesSchemes": ["nmap", "kakaomap"]
+      }
+    },
+    "android": {
+      "package": "com.threshold.app",
+      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION", "CAMERA"]
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "가까운 Passage와의 거리, Dérive의 Tracé를 그리기 위해 현재 위치를 사용합니다."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Dérive 중 관찰한 장면을 기록하기 위해 사진을 선택합니다.",
+          "cameraPermission": "Dérive 중 관찰한 장면을 촬영하기 위해 카메라를 사용합니다."
+        }
+      ]
+    ]
+  }
+}
