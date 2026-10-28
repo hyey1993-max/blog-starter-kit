@@ -1,0 +1,372 @@
+:root {
+  --paper: #f6f3ec;
+  --paper-raised: #fbf9f4;
+  --ink: #2a2824;
+  --ink-soft: #5d5850;
+  --ink-faint: #8f897e;
+  --rule: #ddd6c8;
+  --accent: #5b4a36;
+  --danger: #8a3b2e;
+  --serif: var(--font-serif), "Noto Serif KR", "Nanum Myeongjo", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.8;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 3px;
+}
+
+.shell {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 16px 96px;
+}
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 20px 0 12px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 28px;
+  font-family: var(--sans);
+  font-size: 14px;
+}
+
+.topbar .brand {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.topbar nav {
+  display: flex;
+  gap: 18px;
+}
+
+.topbar nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+h1 {
+  font-size: 22px;
+  margin: 0 0 8px;
+}
+
+h2 {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.step {
+  margin-bottom: 40px;
+}
+
+.step-label {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+}
+
+.muted {
+  color: var(--ink-soft);
+}
+
+.small {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+textarea,
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 12px 14px;
+  line-height: 1.7;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+  border-color: var(--ink-faint);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 9em;
+}
+
+textarea.short {
+  min-height: 4.5em;
+}
+
+button {
+  font-family: var(--sans);
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 11px 18px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--rule);
+}
+
+button.link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 3px;
+  font-size: 14px;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.choice {
+  font-family: var(--sans);
+  font-size: 14px;
+  padding: 7px 12px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-soft);
+}
+
+.choice[aria-pressed="true"] {
+  border-color: var(--ink);
+  color: var(--ink);
+  background: var(--paper-raised);
+}
+
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.seg button {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink-faint);
+  padding: 6px 11px;
+  font-size: 13px;
+}
+
+.seg button[aria-pressed="true"] {
+  background: var(--paper-raised);
+  color: var(--ink);
+}
+
+.seg button + button {
+  border-left: 1px solid var(--rule);
+}
+
+.passage {
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 18px 18px 14px;
+  margin: 14px 0;
+}
+
+.passage .ref {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.passage p {
+  margin: 0 0 6px;
+}
+
+.passage sup {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--ink-faint);
+  margin-right: 4px;
+  vertical-align: 0.4em;
+}
+
+.interp section {
+  margin-bottom: 26px;
+}
+
+.interp h3 {
+  font-size: 15px;
+  font-family: var(--sans);
+  color: var(--accent);
+  margin: 0 0 6px;
+  letter-spacing: 0.02em;
+}
+
+.interp p {
+  margin: 0 0 10px;
+}
+
+.interp ul {
+  margin: 0;
+  padding-left: 1.1em;
+}
+
+.interp li {
+  margin-bottom: 10px;
+}
+
+.interp .anchor {
+  font-size: 19px;
+  border-left: 2px solid var(--accent);
+  padding-left: 14px;
+}
+
+.interp .care {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 14px 16px;
+  background: var(--paper-raised);
+}
+
+.notice {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink-soft);
+  border: 1px dashed var(--rule);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 12px 0;
+}
+
+.error {
+  color: var(--danger);
+  border-color: color-mix(in srgb, var(--danger) 40%, var(--rule));
+}
+
+.pulse {
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.timeline li {
+  border-top: 1px solid var(--rule);
+  padding: 18px 0;
+}
+
+.timeline .date {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+.summary {
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin: 14px 0 28px;
+  white-space: pre-wrap;
+}
+
+.card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-list li {
+  border-top: 1px solid var(--rule);
+  padding: 14px 0;
+}
+
+.card-list a {
+  text-decoration: none;
+  display: block;
+}
+
+.badge {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--ink-faint);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 1px 8px;
+  margin-left: 6px;
+  vertical-align: 2px;
+}
+
+.prewrap {
+  white-space: pre-wrap;
+}
