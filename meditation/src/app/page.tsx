@@ -1,10 +1,13 @@
 import { Meditation } from "@/components/Meditation";
+import { SetupNeeded } from "@/components/SetupNeeded";
 import { Topbar } from "@/components/Topbar";
+import { isDbConfigured } from "@/lib/db";
 import { listThreads } from "@/lib/repo";
 
 export const dynamic = "force-dynamic";
 
 export default async function TodayPage() {
+  if (!isDbConfigured()) return <SetupNeeded />;
   const threads = (await listThreads())
     .filter((t) => t.status === "active")
     .map((t) => ({ id: t.id, title: t.title, summary: t.summary, entryCount: t.entry_count }));

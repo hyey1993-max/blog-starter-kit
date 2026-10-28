@@ -3,10 +3,9 @@
   "private": true,
   "scripts": {
     "prepare-data": "node scripts/fetch-krv.mjs",
-    "migrate": "node scripts/migrate.mjs",
     "predev": "node scripts/fetch-krv.mjs",
     "dev": "next dev",
-    "prebuild": "node scripts/fetch-krv.mjs && node scripts/migrate.mjs",
+    "prebuild": "node scripts/fetch-krv.mjs",
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",

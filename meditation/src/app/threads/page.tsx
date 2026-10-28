@@ -1,11 +1,14 @@
 import Link from "next/link";
+import { SetupNeeded } from "@/components/SetupNeeded";
 import { Topbar } from "@/components/Topbar";
+import { isDbConfigured } from "@/lib/db";
 import { formatDate } from "@/lib/context";
 import { listThreads } from "@/lib/repo";
 
 export const dynamic = "force-dynamic";
 
 export default async function ThreadsPage() {
+  if (!isDbConfigured()) return <SetupNeeded />;
   const threads = await listThreads();
   return (
     <main className="shell">

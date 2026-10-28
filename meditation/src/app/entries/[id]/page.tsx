@@ -2,13 +2,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { InterpretationView } from "@/components/InterpretationView";
 import { PassageView, versesFromText } from "@/components/PassageView";
+import { SetupNeeded } from "@/components/SetupNeeded";
 import { Topbar } from "@/components/Topbar";
+import { isDbConfigured } from "@/lib/db";
 import { formatDate } from "@/lib/context";
 import { getEntry, getThread, isId } from "@/lib/repo";
 
 export const dynamic = "force-dynamic";
 
 export default async function EntryPage({ params }: { params: Promise<{ id: string }> }) {
+  if (!isDbConfigured()) return <SetupNeeded />;
   const { id } = await params;
   if (!isId(id)) notFound();
   const entry = await getEntry(id);

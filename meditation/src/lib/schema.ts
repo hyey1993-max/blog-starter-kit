@@ -1,5 +1,5 @@
--- 여러 번 실행해도 안전하도록 IF NOT EXISTS로만 작성한다.
-
+// 여러 번 실행해도 안전하도록 IF NOT EXISTS로만 작성한다. 서버가 처음 DB에 접속할 때 적용된다.
+export const SCHEMA_SQL = `
 CREATE TABLE IF NOT EXISTS threads (
   id          bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   title       text NOT NULL,
@@ -35,3 +35,4 @@ CREATE TABLE IF NOT EXISTS thread_reviews (
   content     text NOT NULL,
   created_at  timestamptz NOT NULL DEFAULT now()
 );
+`;

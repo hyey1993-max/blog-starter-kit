@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { SetupNeeded } from "@/components/SetupNeeded";
 import { Topbar } from "@/components/Topbar";
+import { isDbConfigured } from "@/lib/db";
 import { formatDate } from "@/lib/context";
 import { getThread, isId, listEntries } from "@/lib/repo";
 
@@ -13,6 +15,7 @@ export default async function ThreadPage({
   params: Promise<{ id: string }>;
   searchParams: Promise<{ saved?: string }>;
 }) {
+  if (!isDbConfigured()) return <SetupNeeded />;
   const { id } = await params;
   const { saved } = await searchParams;
   if (!isId(id)) notFound();

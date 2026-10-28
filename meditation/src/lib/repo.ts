@@ -1,4 +1,4 @@
-import { getSql } from "./db";
+import { db } from "./db";
 import type { Interpretation } from "./interpret-core";
 
 export type ThreadStatus = "active" | "closed";
@@ -35,7 +35,7 @@ export const isId = (value: unknown): value is string =>
   typeof value === "string" && /^\d{1,18}$/.test(value);
 
 export async function listThreads(): Promise<ThreadListItem[]> {
-  const sql = getSql();
+  const sql = await db();
   return sql<ThreadListItem[]>`
     SELECT t.*, count(e.id)::int AS entry_count, max(e.created_at) AS last_entry_at
     FROM threads t LEFT JOIN entries e ON e.thread_id = t.id
@@ -44,19 +44,19 @@ export async function listThreads(): Promise<ThreadListItem[]> {
 }
 
 export async function getThread(id: string): Promise<Thread | null> {
-  const sql = getSql();
+  const sql = await db();
   const [row] = await sql<Thread[]>`SELECT * FROM threads WHERE id = ${id}`;
   return row ?? null;
 }
 
 export async function createThread(title: string): Promise<Thread> {
-  const sql = getSql();
+  const sql = await db();
   const [row] = await sql<Thread[]>`INSERT INTO threads (title) VALUES (${title}) RETURNING *`;
   return row;
 }
 
 export async function listEntries(threadId: string, limit?: number): Promise<Entry[]> {
-  const sql = getSql();
+  const sql = await db();
   return sql<Entry[]>`
     SELECT * FROM entries WHERE thread_id = ${threadId}
     ORDER BY created_at DESC
@@ -64,7 +64,7 @@ export async function listEntries(threadId: string, limit?: number): Promise<Ent
 }
 
 export async function getEntry(id: string): Promise<Entry | null> {
-  const sql = getSql();
+  const sql = await db();
   const [row] = await sql<Entry[]>`SELECT * FROM entries WHERE id = ${id}`;
   return row ?? null;
 }
@@ -72,7 +72,7 @@ export async function getEntry(id: string): Promise<Entry | null> {
 export type NewEntry = Omit<Entry, "id" | "created_at">;
 
 export async function insertEntry(entry: NewEntry): Promise<Entry> {
-  const sql = getSql();
+  const sql = await db();
   return sql.begin(async (tx) => {
     const [row] = await tx<Entry[]>`
       INSERT INTO entries (
